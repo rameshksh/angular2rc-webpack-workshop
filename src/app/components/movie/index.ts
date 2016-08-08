@@ -15,7 +15,7 @@ import {Movie} from '../../models/Movie';
     directives: [RouterLink, NgFor, NgIf]
 })
 
-export class MovieIndex //extends Base
+export class MovieIndex implements OnInit//extends Base
 {
     private proxyService: ProxyService;
     private movies: Array<Movie>;
@@ -69,7 +69,7 @@ export class MovieIndex //extends Base
         }
     }
 
-    onInit() {
+    ngOnInit() {
         this.getMovies();
     }
 

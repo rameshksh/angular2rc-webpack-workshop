@@ -1,8 +1,7 @@
-﻿
+﻿/// <reference path="../../typings/index.d.ts" />
+
 import {Component, ComponentRef,OnInit, OnChanges, bind} from '@angular/core';
-import {RouterLink, RootRouter} from '@angular/router-deprecated';
 import {RouterOutlet,Router, ROUTER_DIRECTIVES , provideRouter,RouterConfig} from '@angular/router';
-import {Http} from '@angular/http';
 import {NgFor, NgIf, Location } from '@angular/common';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 
@@ -14,25 +13,15 @@ import {MovieDetails} from './components/movie/details';
 
 import {ProxyService} from './services/proxyService';
 
+import './less/app.less';
+
 @Component({
     selector: 'my-app',
-    templateUrl: './app.html',
-    directives: [RouterOutlet, RouterLink,ROUTER_DIRECTIVES]
+    templateUrl: './app.html', 
+    directives: [RouterOutlet, ROUTER_DIRECTIVES]
 })
 
-const routes: RouterConfig = [
-  { path: '/', component: Home },
-  { path: '/home', component: Home },
-  { path: '/about', component: About },
-  { path: '/movies/details/:id', component: MovieDetails },
-  { path: '/movies', component: MovieIndex}
-];
-
-export const appRouterProviders = [
-  provideRouter(routes)
-];
-
-class App //extends Base
+export class AppComponent //extends Base
 {
      activeHomeTab: string;
      activeAboutTab: string;
@@ -40,12 +29,7 @@ class App //extends Base
 
      constructor()
      {
-         // Here we configure, for each route, which component should be added and its alias for URL linking
-         //router
-         //    .config('/', Home, 'home')
-         //    .then((_) => router.config('/login', Login, 'login'))
-         //    .then((_) => router.config('/login', Login, 'login'))
-         //    .then((_) => router.navigate('/'))
+         
      }  
 
     onInit()
@@ -79,11 +63,20 @@ class App //extends Base
     }
 }
 
+export const routes: RouterConfig = [  
+  { path: 'home', component: Home },
+  { path: 'about', component: About },
+  { path: 'movies/details/:id', component: MovieDetails },
+  { path: 'movies', component: MovieIndex}
+];
+
+export const appRouterProviders = [
+  provideRouter(routes)
+];
+
 export const moviesInjectables = [   
     bind(ProxyService).toClass(ProxyService),
     // We only have this to mimic Angular 1's di that is limited only to string tokens. Otherwise we would use `ProxyService` class as the token
     //bind(Router).toValue(new RootRouter()),
     bind('ProxyService').toAlias(ProxyService)
 ];
-
-bootstrap(App, [moviesInjectables, appRouterProviders]);

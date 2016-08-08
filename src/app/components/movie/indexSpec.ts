@@ -73,7 +73,7 @@ export function main() {
         });
 
         it('should call getMovies on calling onInit function', () => {
-            component.onInit();
+            component.ngOnInit();
 
             expect(proxyService.getMovies).toHaveBeenCalled();
         });

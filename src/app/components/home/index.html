@@ -8,7 +8,7 @@
 <section>   
     <div class="span12">
         <ul id="movie-list" class="form list list-unstyled">
-            <li class="row" template="ng-for #movie of movies; #i = index">
+            <li class="row" template="ngFor let movie of movies; #i = index">
                 <div class="col-sm-12" (click)="getDetails($event, movie.id)">
                     <div class="col-sm-11">
                         <div class="title"> {{movie.title}}   </div>

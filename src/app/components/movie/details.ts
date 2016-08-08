@@ -12,7 +12,7 @@ import {Movie} from '../../models/movie';
     directives: [RouterLink, NgFor, NgIf]
 })
 
-export class MovieDetails //extends Base
+export class MovieDetails implements OnInit//extends Base
 {
     private proxyService: ProxyService;
     private movie: Movie;
@@ -40,7 +40,7 @@ export class MovieDetails //extends Base
         //});
     }
 
-    onInit()
+    ngOnInit()
     {
         this.getMovieDetails();
     }

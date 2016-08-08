@@ -7,9 +7,10 @@ module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'app': './src/app/app.ts'
+    'app': './src/main.ts'
   },
 
+  devtool: 'source-map',
   resolve: {
     extensions: ['', '.js', '.ts']
   },
@@ -18,6 +19,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
+        exclude:[/node_modules/],
         loaders: ['ts', 'angular2-template-loader']
       },
       {
@@ -37,6 +39,14 @@ module.exports = {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw'
+      },
+      {
+         test: /\.less$/,
+          loader: ExtractTextPlugin.extract(
+              // activate source maps via loader query
+              'css?sourceMap!' +
+              'less?sourceMap'
+          )
       }
     ]
   },
@@ -48,6 +58,8 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    })
+    }),
+
+    new ExtractTextPlugin('styles.css')
   ]
 };

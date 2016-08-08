@@ -1,16 +1,18 @@
-﻿<section class="header">
-    <nav class="navbar navbar-default navbar-static-top wrapper">
-        <div class="container">
-            <ul class="list-inline">
-                <li [class]="activeHomeTab" ><a [routerLink]="['/home']" (click)="setActiveTab('home')">Home</a></li>
-                <li [class]="activeAboutTab" ><a [routerLink]="['/about']" (click)="setActiveTab('about')">About</a></li>
-                <li [class]="activeMoviesTab"><a [routerLink]="['/movies']" (click)="setActiveTab('movies')">Movies</a></li>
-            </ul>           
-        </div>
-    </nav>   
-</section>
-<section class="content">
-    <div class="wrapper">
-        <router-outlet></router-outlet>
-    </div>   
-</section>
+﻿<div class="movies">    
+    <section class="content">
+        <div class="wrapper">
+            <section class="header">
+                <nav class="navbar nav-inline">
+                    <div class="container">
+                        <ul class="nav nav-pills">
+                            <li  class="nav-item" ><a [routerLink]="['/home']" (click)="setActiveTab('home')" class='nav-link active'>Home</a></li>
+                            <li  class="nav-item" ><a [routerLink]="['/about']" (click)="setActiveTab('about')" class='nav-link'>About</a></li>
+                            <li  class="nav-item" ><a [routerLink]="['/movies']" (click)="setActiveTab('movies')" class='nav-link'>Movies</a></li>
+                        </ul>           
+                    </div>
+                </nav>   
+            </section>
+          <router-outlet></router-outlet>
+        </div>   
+    </section>
+</div>

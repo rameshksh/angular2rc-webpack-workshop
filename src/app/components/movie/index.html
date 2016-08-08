@@ -5,7 +5,7 @@
     </div>
     <div class="col-sm-8">
         <ul id="menu-list" class="form menu-list list-inline list-unstyled">
-            <li template="ng-for #menu of menus; #i = index">
+            <li template="ngFor let menu of menus; #i = index">
                 <a (click)="getByFilters(menu.sortKey, menu.order)">{{menu.description}}</a>
             </li>
         </ul>
@@ -19,7 +19,7 @@
 </section>
 <section class="panel panel-default">
     <ul id="movie-list" class="form list list-unstyled">
-        <li class="row" template="ng-for #movie of movies; #i = index">
+        <li class="row" template="ngFor let movie of movies; #i = index">
             <div class="col-sm-12">
                 <div class=" col-sm-10">
                     <div class="title"> {{movie.title}}   </div>

@@ -19,7 +19,7 @@
     </div>
     <div>
         <ul id="review-list" class="form list list-unstyled">
-            <li class="row" template="ng-for #review of movie.reviews; #i = index">
+            <li class="row" template="ngFor let review of movie.reviews; #i = index">
                 <div class="col-sm-12">
                     <div class=" col-sm-10">
                         <div class="title">{{review.title}}   </div>

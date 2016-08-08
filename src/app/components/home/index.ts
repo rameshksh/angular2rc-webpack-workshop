@@ -17,7 +17,7 @@ import {Base} from '../../base';
     directives: [RouterLink, NgFor, NgIf]
 })
 
-export class Home //extends Base 
+export class Home implements OnInit //extends Base 
 {
     private proxyService: ProxyService;
     private movies: Array<Movie>;
@@ -47,7 +47,7 @@ export class Home //extends Base
        // this.router.parent.navigate('/movies/detail/' + id);
     }
 
-    onInit() {
+    ngOnInit() {
         this.getTopMovies();
     }
 
