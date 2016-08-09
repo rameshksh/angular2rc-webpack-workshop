@@ -1,6 +1,4 @@
-﻿
-export function main() {
-    describe("A suite", function () {
+﻿ describe("Proxy service", function () {
         beforeEach(function () {
 
         });
@@ -12,7 +10,5 @@ export function main() {
         it("contains spec with an expectation", function () {
 
             expect(true).toBe(true);
-
         });
-    });
-}
+ });

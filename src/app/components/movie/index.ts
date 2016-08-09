@@ -72,8 +72,4 @@ export class MovieIndex implements OnInit//extends Base
     ngOnInit() {
         this.getMovies();
     }
-
-    onChange() {
-        this.getMovies();
-    }
 }

@@ -1,22 +1,40 @@
-﻿
-import {Http, BaseRequestOptions} from '@angular/http';
-import {MockBackend} from '@angular/http/testing';
+﻿import {
+  describe,
+  expect,
+  beforeEach,
+  it,
+  inject,
+  beforeEachProviders
+} from '@angular/core/testing';
+import {Http, Headers, HTTP_PROVIDERS, BaseRequestOptions,
+        XHRBackend, Response} from '@angular/http';
+import {ResponseOptions} from '@angular/http';
+import {MockBackend, MockConnection} from '@angular/http/testing';
+
 import {bind} from '@angular/core';
 import {Injector, provide} from '@angular/core';
 
 import {Review} from '../../models/review';
 import {Movie} from '../../models/movie';
-import {MovieIndex} from  '../../components/movie/index';
+import {MovieIndex} from './index';
+
+import {Home} from  '../../components/home/index';
 import {ProxyService} from '../../services/proxyService';
 
-
-export function main() {
     describe('Home index component:', () => {
         var component: MovieIndex,
             movieList: Array<Movie>,
             proxyService: ProxyService;
 
         var getTopMoviesPromise: Promise<Array<Movie>>;
+
+        beforeEachProviders(() => {
+                    return [
+                    HTTP_PROVIDERS,
+                    provide(XHRBackend, {useClass: MockBackend}),
+                    ProxyService
+                    ];
+        });
 
         beforeEach(() => {
             movieList = new Array<Movie>();
@@ -43,24 +61,15 @@ export function main() {
             movieList.push(movie);
         });
 
-        beforeEach(() => {
+        beforeEach(inject([XHRBackend, ProxyService], (mockBackend, proxySvc) => {
+                proxyService = proxySvc;
 
-            var injector = Injector.bind([
-                            MockBackend,
-                            {provide: Http, useFactory: (backend, options) => {
-                            return new Http(backend, options);
-                            }, deps: [MockBackend, BaseRequestOptions]}]);
-            var backend = injector.get(MockBackend);
-            var http = injector.get(Http);
+                component = new MovieIndex(proxyService);           
 
-            proxyService = new ProxyService(http);
+               getTopMoviesPromise = new Promise<Array<Movie>>(function (resolve, reject) { resolve(movieList) });
 
-            component = new MovieIndex(proxyService);
-
-            getTopMoviesPromise = new Promise<Array<Movie>>(function (resolve, reject) { resolve(movieList) });
-
-            spyOn(proxyService, "getMovies").and.returnValue(getTopMoviesPromise);
-        });
+                spyOn(proxyService, "getMovies").and.returnValue(getTopMoviesPromise);
+        }));
 
         it("should initialize proxyService correctly", () => {
             expect(proxyService).toBeDefined();
@@ -76,13 +85,7 @@ export function main() {
             component.ngOnInit();
 
             expect(proxyService.getMovies).toHaveBeenCalled();
-        });
-
-        it('should call getMovies on calling onChange function', () => {
-            component.onChange();
-
-            expect(proxyService.getMovies).toHaveBeenCalled();
-        });
+        });       
 
         it('should call getMovies on calling getByFilters when both params are not passed', () => {
             component.getByFilters('sdfd', 'sdf');
@@ -107,6 +110,4 @@ export function main() {
 
             expect(proxyService.getMovies).not.toHaveBeenCalled();
         });
-
     });
-}

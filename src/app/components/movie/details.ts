@@ -43,10 +43,5 @@ export class MovieDetails implements OnInit//extends Base
     ngOnInit()
     {
         this.getMovieDetails();
-    }
-
-    onChange()
-    {
-        this.getMovieDetails();
-    }
+    }   
 }

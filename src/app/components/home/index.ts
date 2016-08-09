@@ -50,8 +50,4 @@ export class Home implements OnInit //extends Base
     ngOnInit() {
         this.getTopMovies();
     }
-
-    onChange() {
-        this.getTopMovies();
-    }
 }
