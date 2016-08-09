@@ -10,7 +10,6 @@
     "lite": "lite-server",
     "server-run": "node ./build/server/src/server.js",
     "postinstall": "typings install",
-    "postupdate": "typings update",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"

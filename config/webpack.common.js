@@ -6,9 +6,9 @@ var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    'polyfills': './client/polyfills.ts',
+    'vendor': './client/vendor.ts',
+    'app': './client/main.ts'
   },
 
   devtool: 'source-map', 
@@ -61,7 +61,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'client/index.html'
     }),
 
     new ExtractTextPlugin('styles.css')
