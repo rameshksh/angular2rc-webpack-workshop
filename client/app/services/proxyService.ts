@@ -20,7 +20,7 @@ export class ProxyService implements IProxyService {
     public getMovieById(id: string) : Promise<Movie> {
         var httpService = this.http;
         return new Promise<Movie>(function (resolve, reject) {
-            httpService.get('http://localhost:3000/api/movies/get/' + id).subscribe(res => resolve(res.json()));
+            httpService.get('http://localhost:8000/api/movies/get/' + id).subscribe(res => resolve(res.json()));
         });
     }
 
@@ -29,22 +29,20 @@ export class ProxyService implements IProxyService {
 
         if (sortKey && sortOrder) {
             return new Promise<Array<Movie>>(function (resolve, reject) {
-                httpService.request('http://localhost:3000/api/movies/getall?sortKey=' + sortKey + '&sortOrder=' + sortOrder).subscribe(res => resolve(res.json()));
+                httpService.request('http://localhost:8000/api/movies/getall?sortKey=' + sortKey + '&sortOrder=' + sortOrder).subscribe(res => resolve(res.json()));
             });
         } else {
             return new Promise<Array<Movie>>(function (resolve, reject) {
-                httpService.request('http://localhost:3000/api/movies/getall').subscribe(res => resolve(res.json()));
+                httpService.request('http://localhost:8000/api/movies/getall').subscribe(res => resolve(res.json()));
             });
         }
-
-       
     }
 
     public getTopMovies(): Promise<Array<Movie>> {
         var httpService = this.http;
 
         return new Promise<Array<Movie>>(function (resolve, reject) {
-            httpService.request('http://localhost:3000/api/movies/gettop').subscribe(res => resolve(res.json()));
+            httpService.request('http://localhost:8000/api/movies/gettop').subscribe(res => resolve(res.json()));
         });
     }
 }

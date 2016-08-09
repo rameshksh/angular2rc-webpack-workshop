@@ -11,8 +11,8 @@
             <li class="row" template="ngFor let movie of movies; #i = index">
                 <div class="col-sm-12" (click)="getDetails($event, movie.id)">
                     <div class="col-sm-11">
-                        <div class="title"> {{movie.title}}   </div>
-                        <div class="desc"> {{movie.description}}   </div>
+                        <div class="title"> {{movie.Name}}   </div>
+                        <div class="desc"> {{movie.Description}}   </div>
                     </div>
                 </div>
             </li>

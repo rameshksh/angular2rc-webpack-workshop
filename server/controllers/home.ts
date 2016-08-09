@@ -1,13 +1,13 @@
-﻿/// <reference path="../../../typings/main.d.ts" />
+﻿/// <reference path="../../typings/index.d.ts" />
 
 import {Express, Request, Response} from "express";
-import {Services} from '../services/movie';
+import {MovieService} from '../services/movie';
 
 export class HomeController
 {
-    service: Services.MovieService;
+    service: MovieService;
 
-    public constructor(service: Services.MovieService)
+    public constructor(service: MovieService)
     {        
         this.service = service;
     }
@@ -16,7 +16,7 @@ export class HomeController
     {        
         var query = { review: { $gt: 4,  } }
 
-        this.service.getByQuery(query, null, null, function (err, item) {
+        this.service.getByQuery(query, function (err, item) {
             return res.json(item);
         });
     }

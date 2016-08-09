@@ -1,7 +1,8 @@
-﻿
-export class Review
+﻿/// <reference path="../../typings/index.d.ts" />
+
+export interface IReview
 {
-    public Title: string;
-    public Description: string;
-    public ReviewDate: string;
+     Title: string;
+     Description: string;
+     ReviewDate: string;
 } 

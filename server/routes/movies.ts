@@ -1,27 +1,20 @@
-﻿/// <reference path="../../../typings/main.d.ts" />
+﻿/// <reference path="../../typings/index.d.ts" />
 
 import {Express, Router, Request, Response} from 'express';
-import {Db} from 'mongodb';
-import {Services} from '../services/movie';
-import {Repository} from '../repository/movie';
+import {MovieService} from '../services/movie';
 import {Controllers} from '../controllers/movie';
 import logger = require('winston');
 
 export class MoviesRoute
 {
     moviesController: Controllers.MoviesController;  
-    service: Services.MovieService;  
+    service: MovieService;  
     app: Express;
-    db: Db;
 
-    constructor(app: Express, db: Db)
+    constructor(app: Express)
     {
-        this.app = app;
-        this.db = db;
-
-        var repository = new Repository.MovieRepository(this.db)
-        this.service = new Services.MovieService(repository);
-        this.moviesController = new Controllers.MoviesController(this.service);
+        this.app = app;                
+        this.moviesController = new Controllers.MoviesController();
     }
 
     getRoutes()

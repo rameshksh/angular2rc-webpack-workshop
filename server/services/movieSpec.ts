@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="../../typings/index.d.ts" />
+
 export function main()
 {
     describe("A suite", function () {

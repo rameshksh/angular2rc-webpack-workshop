@@ -1,15 +1,13 @@
-﻿
-import {Review} from './review';
+﻿/// <reference path="../../typings/index.d.ts" />
 
-export class Movie
+export interface IMovie
 {
-    public Id: number;
-    public Name: string;
-    public Description: string;
-    public Collection: number;
-    public Genre: string;
-    public Language: string;
-    public Reviews: Array<Review>;
-    public Year: string;
-    public Rating: number;
+    Id: number;
+    Name: string;
+    Description: string;
+    Collection: number;
+    Genre: string;
+    Language: string;   
+    Year: string;
+    Rating: number;
 }

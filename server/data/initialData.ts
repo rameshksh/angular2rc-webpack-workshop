@@ -1,28 +1,22 @@
-﻿/// <reference path="../../../typings/main.d.ts" />
+﻿/// <reference path="../../typings/index.d.ts" />
 
 import {Express, Request, Response} from "express";
 import logger = require('winston');
-import {Db} from 'mongodb';
-
-import {Repository} from '../repository/movie';
-import {Services} from '../services/movie';
-import {Movie} from '../models/movie';
-import {Review} from '../models/review';
+import {MovieService} from '../services/movie';
+import {IMovie} from '../models/movie';
+import {IReview} from '../models/review';
 
 var self;
 
 export class InitialData
 {
-    service: Services.MovieService;
-    sampleData: Array<Movie>;
-    db: Db;
+    service: MovieService;
+    sampleData: Array<IMovie>;
 
-
-    constructor(db: Db)
+    constructor()
     {
-        self = this;
-        var repository = new Repository.MovieRepository(db)
-        this.service = new Services.MovieService(repository);
+        self = this;     
+        this.service = new MovieService();
     }
 
     verifyData()
@@ -30,7 +24,7 @@ export class InitialData
         logger.log('debug', 'verifying movies from database..');
         var sampleData = this.getSampleData();
 
-        this.service.getAll(null,null,function (err, items)
+        this.service.getAll(function (err, items)
         { 
             if (items && (items.length > 0))
             {
@@ -51,12 +45,12 @@ export class InitialData
         });
     }
 
-    getSampleData(): Array<Movie>
+    getSampleData(): Array<IMovie>
     {
-        var list = new Array<Movie>();
+        var list = new Array<IMovie>();
         
-        var newMovie = new Movie();
-        var review = new Review();
+        var newMovie = <IMovie>{};
+        var review = <IReview>{};
 
         newMovie.Id = 1;
         newMovie.Name = "Avtar";
@@ -71,13 +65,13 @@ export class InitialData
         review.Description = "Must watch movie";
         review.ReviewDate = "12/2/2015";
 
-        newMovie.Reviews = new Array<Review>();
-        newMovie.Reviews.push(review);
+        //newMovie.Reviews = new Array<IReview>();
+        //newMovie.Reviews.push(review);
 
         list.push(newMovie);        
 
-        newMovie = new Movie();
-        review = new Review();
+        var newMovie = <IMovie>{};
+        var review = <IReview>{};
 
         newMovie.Id = 2;
         newMovie.Name = "Avtar";
@@ -91,13 +85,13 @@ export class InitialData
         review.Description = "Must watch movie";
         review.ReviewDate = "12/2/2015";
 
-        newMovie.Reviews = new Array<Review>();
-        newMovie.Reviews.push(review);
+        //newMovie.Reviews = new Array<Review>();
+        //newMovie.Reviews.push(review);
 
         list.push(newMovie);       
 
-        newMovie = new Movie();
-        review = new Review();
+         var newMovie = <IMovie>{};
+        var review = <IReview>{};
 
         newMovie.Id = 3;
         newMovie.Name = "Avtar";
@@ -112,13 +106,13 @@ export class InitialData
         review.Description = "Must watch movie";
         review.ReviewDate = "12/2/2015";
 
-        newMovie.Reviews = new Array<Review>();
-        newMovie.Reviews.push(review);
+       // newMovie.Reviews = new Array<Review>();
+       // newMovie.Reviews.push(review);
 
         list.push(newMovie);
 
-        newMovie = new Movie();
-        review = new Review();
+         var newMovie = <IMovie>{};
+        var review = <IReview>{};
 
         newMovie.Id = 4;
         newMovie.Name = "Avtar";
@@ -133,13 +127,13 @@ export class InitialData
         review.Description = "Must watch movie";
         review.ReviewDate = "12/2/2015";
 
-        newMovie.Reviews = new Array<Review>();
-        newMovie.Reviews.push(review);
+        //newMovie.Reviews = new Array<Review>();
+       // newMovie.Reviews.push(review);
 
         list.push(newMovie);       
 
-        newMovie = new Movie();
-        review = new Review();
+         var newMovie = <IMovie>{};
+        var review = <IReview>{};
 
         newMovie.Id = 5;
         newMovie.Name = "Avtar";
@@ -153,9 +147,9 @@ export class InitialData
         review.Description = "Must watch movie";
         review.ReviewDate = "12/2/2015";
 
-        newMovie.Reviews = new Array<Review>();
+       // newMovie.Reviews = new Array<Review>();
 
-        newMovie.Reviews.push(review);
+        //newMovie.Reviews.push(review);
 
         list.push(newMovie);
 

@@ -1,9 +1,8 @@
-﻿/// <reference path="../../../typings/main.d.ts" />
-
+﻿/// <reference path="../../typings/index.d.ts" />
 
 import {Express, Request, Response} from "express";
-import {Services} from '../services/movie';
-import {Movie} from '../models/Movie';
+import {MovieService} from '../services/movie';
+import {IMovie} from '../models/Movie';
 
 var self;
 
@@ -20,12 +19,12 @@ export module Controllers {
 
     export class MoviesController //implements IMoviesController
     {
-        private movies: Array<Movie>;
-        private movieService: Services.MovieService;       
+        private movies: Array<IMovie>;
+        private movieService: MovieService;       
 
-        constructor(service: Services.MovieService) {
+        constructor() {
             self = this;
-            this.movieService = service;
+            this.movieService = new MovieService();
         }
 
         public createMovie() {
@@ -37,7 +36,7 @@ export module Controllers {
             var sortKey = req.query.sortKey;
             var sortOrder = req.query.sortOrder;
 
-            self.movieService.getAll(sortKey, sortOrder, function (err, item)
+            self.movieService.getAll(function (err, item)
             {
                 if(err) console.log(err);
 
@@ -49,7 +48,7 @@ export module Controllers {
 
             var query = { rating: { $gt: 4 } }
 
-            self.movieService.getByQuery(query, null, null, function (err, item) {
+            self.movieService.getByQuery(query, function (err, item) {
                 if (err) console.log(err);
 
                 return res.json(item);
@@ -59,7 +58,7 @@ export module Controllers {
         public getMovieDetails(req: Request, res: Response) {
             var id = req.params.id;           
             
-            self.movieService.getById(id, function (err, item) {
+            self.movieService.get(id, function (err, item) {
                 if (err) console.log(err);
 
                 return res.json(item);
@@ -68,14 +67,14 @@ export module Controllers {
 
         public updateMovie(req: Request, res: Response) {
             var id = "";
-            this.movieService.update(id, null, function (item) {
+            self.movieService.update(id, null, function (item) {
                 return res.json(item);
             });
         }
 
         public deleteMovie(req: Request, res: Response) {
             var id = "";
-            this.movieService.delete(id, function (item) {
+            self.movieService.delete(id, function (item) {
                 return res.json(item);
             });
         }
