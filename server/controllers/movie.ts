@@ -15,6 +15,7 @@ export module Controllers {
         updateMovie();
         updateMovie();
         deleteMovie();
+        getImdbMovies(req: Request, res: Response);
     }
 
     export class MoviesController //implements IMoviesController
@@ -25,6 +26,17 @@ export module Controllers {
         constructor() {
             self = this;
             this.movieService = new MovieService();
+        }
+
+        public getImdbMovies(req: Request, res: Response)
+        {
+            var query = { name: 'The Toxic Avenger' };
+            self.movieService.getFromImdb(query, function (err, item)
+            {
+                if(err) console.log(err);
+
+                return res.json(item);
+            });
         }
 
         public createMovie() {

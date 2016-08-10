@@ -22,5 +22,7 @@ export class MoviesRoute
         this.app.get('/api/movies/getall', this.moviesController.getMovies);
         this.app.get('/api/movies/gettop', this.moviesController.getTopMovies);
         this.app.get('/api/movies/get/:id', this.moviesController.getMovieDetails)
+
+        this.app.get('/api/movies/imdb', this.moviesController.getImdbMovies)
     }
 }

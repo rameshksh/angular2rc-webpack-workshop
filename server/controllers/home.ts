@@ -7,9 +7,9 @@ export class HomeController
 {
     service: MovieService;
 
-    public constructor(service: MovieService)
+    public constructor()
     {        
-        this.service = service;
+        this.service = new MovieService();
     }
 
     public getTopMovies(req: Request, res: Response)

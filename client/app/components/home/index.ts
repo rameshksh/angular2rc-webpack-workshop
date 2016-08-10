@@ -31,7 +31,7 @@ export class Home implements OnInit //extends Base
     }
 
     getTopMovies() {
-        this.proxyService.getTopMovies().then((response) => {
+        this.proxyService.getImdbMovies().then((response) => {
             this.movies = response;
         });
 

@@ -4,8 +4,10 @@ import {Http, Request} from '@angular/http';
 import {Movie} from '../models/Movie';
 
 export interface IProxyService {
-    getMovieById(id: string);
-    getMovies(sortKey: string, sortOrder: string);
+    getMovieById(id: string): Promise<Movie>;
+    getImdbMovies(): Promise<Array<Movie>>;
+    getTopMovies(): Promise<Array<Movie>>; 
+    getMovies(sortKey: string, sortOrder: string): Promise<Array<Movie>>;
 }
 
 @Injectable()
@@ -43,6 +45,14 @@ export class ProxyService implements IProxyService {
 
         return new Promise<Array<Movie>>(function (resolve, reject) {
             httpService.request('http://localhost:8000/api/movies/gettop').subscribe(res => resolve(res.json()));
+        });
+    }
+
+    public getImdbMovies(): Promise<Array<Movie>> {
+        var httpService = this.http;
+
+        return new Promise<Array<Movie>>(function (resolve, reject) {
+            httpService.request('http://localhost:8000/api/movies/imdb').subscribe(res => resolve(res.json()));
         });
     }
 }
