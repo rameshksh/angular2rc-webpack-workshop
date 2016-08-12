@@ -110,9 +110,14 @@ Open Mongo shell C:\Program Files\MongoDB\Server\3.2\bin\mongo.exe
 
 Execute following command in order to create moviesdb on local machine.
 > use moviesdb
+
+Now Test by inserting some data
 > db.movies.insert({name : test})
+
+Retrive data
 >db.movies.find({})
 
+We are ready to run application.
 Now execute following cmd to run server.
 > npm run server.
 
