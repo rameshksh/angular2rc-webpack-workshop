@@ -2,7 +2,7 @@
 
 export interface IReview
 {
-     Title: string;
-     Description: string;
-     ReviewDate: string;
+     title: string;
+     description: string;
+     reviewDate: string;
 } 

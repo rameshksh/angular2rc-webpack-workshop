@@ -7,9 +7,9 @@ import {IReviewModel} from '../models/reviewModel';
 
 // create a schema
 var reviewSchema = new mongoose.Schema({
-    Title: String,
-     Description: String,
-     ReviewDate: String
+     title: String,
+     description: String,
+     reviewDate: String
 });
 
 // the schema is useless so far

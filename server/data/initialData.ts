@@ -51,19 +51,18 @@ export class InitialData
         
         var newMovie = <IMovie>{};
         var review = <IReview>{};
-
-        newMovie.Id = 1;
-        newMovie.Name = "Avtar";
-        newMovie.Description = "Awesome Movie";
-        newMovie.Genre = "Horror";
-        newMovie.Rating = 5;
-        newMovie.Year = "12/2/2005";
-        newMovie.Collection = 100;
-        newMovie.Language = "English";
+       
+        newMovie.name = "Avtar";
+        newMovie.description = "Awesome Movie";
+        newMovie.genre = "Horror";
+        newMovie.rating = 5;
+        newMovie.year = "12/2/2005";
+        newMovie.collection = 100;
+        newMovie.language = "English";
                
-        review.Title = "Good Movie";
-        review.Description = "Must watch movie";
-        review.ReviewDate = "12/2/2015";
+        review.title = "Good Movie";
+        review.description = "Must watch movie";
+        review.reviewDate = "12/2/2015";
 
         //newMovie.Reviews = new Array<IReview>();
         //newMovie.Reviews.push(review);
@@ -73,17 +72,17 @@ export class InitialData
         var newMovie = <IMovie>{};
         var review = <IReview>{};
 
-        newMovie.Id = 2;
-        newMovie.Name = "Avtar";
-        newMovie.Description = "Awesome Movie";
-        newMovie.Genre = "Horror";
-        newMovie.Rating = 5;
-        newMovie.Year = "12/2/2005";
-        newMovie.Collection = 100;
-        newMovie.Language = "English";        
-        review.Title = "Good Movie";
-        review.Description = "Must watch movie";
-        review.ReviewDate = "12/2/2015";
+       
+        newMovie.name = "Avtar";
+        newMovie.description = "Awesome Movie";
+        newMovie.genre = "Horror";
+        newMovie.rating = 5;
+        newMovie.year = "12/2/2005";
+        newMovie.collection = 100;
+        newMovie.language = "English";        
+        review.title = "Good Movie";
+        review.description = "Must watch movie";
+        review.reviewDate = "12/2/2015";
 
         //newMovie.Reviews = new Array<Review>();
         //newMovie.Reviews.push(review);
@@ -93,18 +92,18 @@ export class InitialData
          var newMovie = <IMovie>{};
         var review = <IReview>{};
 
-        newMovie.Id = 3;
-        newMovie.Name = "Avtar";
-        newMovie.Description = "Awesome Movie";
-        newMovie.Genre = "Horror";
-        newMovie.Rating = 5;
-        newMovie.Year = "12/2/2005";
-        newMovie.Collection = 100;
-        newMovie.Language = "English";
+       
+        newMovie.name = "Avtar";
+        newMovie.description = "Awesome Movie";
+        newMovie.genre = "Horror";
+        newMovie.rating = 5;
+        newMovie.year = "12/2/2005";
+        newMovie.collection = 100;
+        newMovie.language = "English";
                
-        review.Title = "Good Movie";
-        review.Description = "Must watch movie";
-        review.ReviewDate = "12/2/2015";
+        review.title = "Good Movie";
+        review.description = "Must watch movie";
+        review.reviewDate = "12/2/2015";
 
        // newMovie.Reviews = new Array<Review>();
        // newMovie.Reviews.push(review);
@@ -114,18 +113,18 @@ export class InitialData
          var newMovie = <IMovie>{};
         var review = <IReview>{};
 
-        newMovie.Id = 4;
-        newMovie.Name = "Avtar";
-        newMovie.Description = "Awesome Movie";
-        newMovie.Genre = "Horror";
-        newMovie.Rating = 5;
-        newMovie.Year = "12/2/2005";
-        newMovie.Collection = 100;
-        newMovie.Language = "English";
+       
+        newMovie.name = "Avtar";
+        newMovie.description = "Awesome Movie";
+        newMovie.genre = "Horror";
+        newMovie.rating = 5;
+        newMovie.year = "12/2/2005";
+        newMovie.collection = 100;
+        newMovie.language = "English";
         
-        review.Title = "Good Movie";
-        review.Description = "Must watch movie";
-        review.ReviewDate = "12/2/2015";
+        review.title = "Good Movie";
+        review.description = "Must watch movie";
+        review.reviewDate = "12/2/2015";
 
         //newMovie.Reviews = new Array<Review>();
        // newMovie.Reviews.push(review);
@@ -135,17 +134,17 @@ export class InitialData
          var newMovie = <IMovie>{};
         var review = <IReview>{};
 
-        newMovie.Id = 5;
-        newMovie.Name = "Avtar";
-        newMovie.Description = "Awesome Movie";
-        newMovie.Genre = "Horror";
-        newMovie.Rating = 5;
-        newMovie.Year = "12/2/2005";
-        newMovie.Collection = 100;
-        newMovie.Language = "English";        
-        review.Title = "Good Movie";
-        review.Description = "Must watch movie";
-        review.ReviewDate = "12/2/2015";
+       
+        newMovie.name = "Avtar";
+        newMovie.description = "Awesome Movie";
+        newMovie.genre = "Horror";
+        newMovie.rating = 5;
+        newMovie.year = "12/2/2005";
+        newMovie.collection = 100;
+        newMovie.language = "English";        
+        review.title = "Good Movie";
+        review.description = "Must watch movie";
+        review.reviewDate = "12/2/2015";
 
        // newMovie.Reviews = new Array<Review>();
 

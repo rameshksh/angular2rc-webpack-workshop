@@ -8,6 +8,7 @@ export interface IProxyService {
     getImdbMovies(): Promise<Array<Movie>>;
     getTopMovies(): Promise<Array<Movie>>; 
     getMovies(sortKey: string, sortOrder: string): Promise<Array<Movie>>;
+    searchImdbMovies(params: Object): Promise<Array<Movie>> ;
 }
 
 @Injectable()
@@ -52,7 +53,17 @@ export class ProxyService implements IProxyService {
         var httpService = this.http;
 
         return new Promise<Array<Movie>>(function (resolve, reject) {
-            httpService.request('http://localhost:8000/api/movies/imdb').subscribe(res => resolve(res.json()));
+            httpService.request('http://localhost:8000/api/imdb').subscribe(res => resolve(res.json()));
+        });
+    }
+
+    public searchImdbMovies(params: any): Promise<Array<Movie>> {
+        var httpService = this.http;
+        
+        var queryString = 'title=' + params.title + '&year=' + params.year + '&type=' + params.type;
+
+        return new Promise<Array<Movie>>(function (resolve, reject) {
+            httpService.request('http://localhost:8000/api/imdb/search', {search : queryString }).subscribe(res => resolve(res.json()));
         });
     }
 }

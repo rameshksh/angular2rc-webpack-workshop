@@ -1,6 +1,6 @@
 ﻿export class Review
 {
-    public Title: string;
-    public Description: string;
-    public ReviewDate: string;
+    public title: string;
+    public description: string;
+    public reviewDate: string;
 } 

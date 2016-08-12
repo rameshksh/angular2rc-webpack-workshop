@@ -2,14 +2,15 @@
 
 export class Movie
 {
-    public Id: number;
-    public Name: string;
-    public Description: string;
-    public Collection: number;
-    public Genre: string;
-    public Language: string;   
-    public Year: string;
-    public Rating: number;
+    public id: number;
+    public name: string;
+    public description: string;
+    public collection: number;
+    public genre: string;
+    public language: string;   
+    public year: number;
+    public rating: number;
+    public type : string
 
     public Reviews: Array<Review>;
 } 

@@ -31,15 +31,9 @@ export class Home implements OnInit //extends Base
     }
 
     getTopMovies() {
-        this.proxyService.getImdbMovies().then((response) => {
+        this.proxyService.searchImdbMovies({}).then((response) => {
             this.movies = response;
-        });
-
-        //this.proxyService.getMovies()
-        //    .map(r => r.json())
-        //    .subscribe(a => {
-        //    this.movies = a;
-        //});
+        });      
     }
 
     getDetails(event, id)

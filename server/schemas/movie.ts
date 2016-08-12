@@ -6,15 +6,15 @@ import mongoose = require('mongoose');
 import {IMovieModel} from '../models/movieModel';
 
 // create a schema
-var movieSchema = new mongoose.Schema({
-    Id: Number,
-    Name: String,
-    Description: String,
-    Collection: Number,
-    Genre: String,
-    Language: String,   
-    Year: String,
-    Rating: Number
+var movieSchema = new mongoose.Schema({ 
+    name: String,
+    description: String,
+    collections: Number,
+    genre: String,
+    language: String,   
+    year: String,
+    type: String,
+    rating: Number
 });
 
 // the schema is useless so far

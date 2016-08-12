@@ -1,7 +1,8 @@
 ﻿/// <reference path="../../typings/index.d.ts" />
 
 //var imdb = require('imdb-api');
-var imdb = require('imdb-node');
+//var imdb = require('imdb-node');
+var omdb = require('omdb');
 
 import {IMovie} from '../models/movie';
 import Movie = require('../schemas/movie');
@@ -10,6 +11,7 @@ export interface IMovieService {
         get(id : string, callback: (errr: Error, item: any) => any) : any;
         getAll(callback: (errr: Error, item: any) => any) : any;
         getFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any;
+        searchFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any;
         getByQuery(query: Object, callback: (errr: Error, item: any) => any) : any;
         initData(obj : Array<IMovie>, callback: (errr: Error, item: any) => any);
         create(obj : IMovie, callback: (errr: Error, item: any) => any);
@@ -24,12 +26,37 @@ export class MovieService implements IMovieService
         
     }
 
-    public getFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any{
-       
-        imdb('http://www.imdb.com/title/tt3450900', function(resultData) {
-            console.log(resultData);
+    public searchFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any{
+        
+        omdb.search(query, function(err, movies) {
+            if(err) {
+                return console.error(err);
+            }
+    
+            if(movies && movies.length < 1) {
+                console.log('No movies were found!');
 
-            callback(null, resultData);
+                callback(err, []);
+            }
+
+            callback(err, movies);     
+        });
+    }
+
+    public getFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any{
+
+        omdb.get(query, true, function(err, movies) {
+            if(err) {
+                return console.error(err);
+            }
+    
+            if(movies && movies.length < 1) {
+                 console.log('No movies were found!');
+
+                  callback(err, []);  
+            }
+
+            callback(err, movies);     
         });
     }
 
@@ -111,4 +138,3 @@ export class MovieService implements IMovieService
         });
     }
 }
- 

@@ -18,20 +18,16 @@ import {Movie} from '../../models/Movie';
 export class MovieIndex implements OnInit//extends Base
 {
     private proxyService: ProxyService;
+    private model : Movie;
     private movies: Array<Movie>;
-    private menus: Array<Menu>;
 
     constructor(proxyService: ProxyService) {  
         //super('movies'); , public router : Router
         this.proxyService = proxyService;
         this.movies = new Array<Movie>();
-        this.menus = new Array<Menu>();
-
-        this.menus.push(new Menu('title', 'A-Z', 'asc'));
-        this.menus.push(new Menu('year', 'year', 'desc'));
-        this.menus.push(new Menu('rating', 'rating', 'desc'));
-        this.menus.push(new Menu('review', 'User Review', 'desc'));
-        this.menus.push(new Menu('collection', 'Box Collection', 'desc'));
+        this.model = new Movie(); 
+        this.model.year = 2016;
+        this.model.type = 'movie';      
     }
 
     getMovies() {
@@ -48,25 +44,13 @@ export class MovieIndex implements OnInit//extends Base
 
     getDetails(event, id: string) {
         window.location.href = '/movies/detail/' + id;
-    }
+    }   
 
-    getByFilters(sortKey: string, sortOrder: string) { 
-       
-        if (sortKey.length && sortOrder.length) {
-            this.menus.forEach(function (item) {
-                if (item.sortKey == sortKey) {
-                    if (item.order == 'asc') {
-                        item.order = 'desc';
-                    } else {
-                        item.order = 'asc';
-                    }
-                }
-            });
-
-            this.proxyService.getMovies(sortKey, sortOrder).then((response) => {
-                this.movies = response;
-            });
-        }
+    onSubmit(){
+        var params = {};
+        this.proxyService.searchImdbMovies(this.model).then((response) => {
+            this.movies = response;
+        });
     }
 
     ngOnInit() {

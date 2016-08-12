@@ -40,18 +40,18 @@ import {ProxyService} from '../../services/proxyService';
             var movie = new Movie();          
             var review = new Review();
 
-            movie.Id = 1;
-            movie.Name = "Avtar";
-            movie.Description = "Awesome Movie";
-            movie.Genre = "Horror";
-            movie.Rating = 5;
-            movie.Year = "12/2/2005";
-            movie.Collection = 100;
-            movie.Language = "English";
+            movie.id = 1;
+            movie.name = "Avtar";
+            movie.description = "Awesome Movie";
+            movie.genre = "Horror";
+            movie.rating = 5;
+            movie.year = 2005;
+            movie.collection = 100;
+            movie.language = "English";
 
-            review.Title = "Good Movie";
-            review.Description = "Must watch movie";
-            review.ReviewDate = "12/2/2015";
+            review.title = "Good Movie";
+            review.description = "Must watch movie";
+            review.reviewDate = "12/2/2015";
 
             movie.Reviews = new Array<Review>();
             movie.Reviews.push(review);

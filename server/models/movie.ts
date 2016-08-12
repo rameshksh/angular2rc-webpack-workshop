@@ -1,13 +1,13 @@
 ﻿/// <reference path="../../typings/index.d.ts" />
 
 export interface IMovie
-{
-    Id: number;
-    Name: string;
-    Description: string;
-    Collection: number;
-    Genre: string;
-    Language: string;   
-    Year: string;
-    Rating: number;
+{    
+    name: string;
+    description: string;
+    collection: number;
+    genre: string;
+    language: string;   
+    year: string;
+    type: string,
+    rating: number;
 }

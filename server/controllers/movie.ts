@@ -30,8 +30,25 @@ export module Controllers {
 
         public getImdbMovies(req: Request, res: Response)
         {
-            var query = { name: 'The Toxic Avenger' };
+            var query = { title: 'saw', year:2016, type:'movie' };
             self.movieService.getFromImdb(query, function (err, item)
+            {
+                if(err) console.log(err);
+
+                return res.json(item);
+            });
+        }
+
+        public searchImdbMovies(req: Request, res: Response)
+        {
+            //console.log(req);
+            
+            var query = { terms : req.query.title,
+                          year: req.query.year, // optional 
+                          type: req.query.type // optional
+            };
+           
+            self.movieService.searchFromImdb(query, function (err, item)
             {
                 if(err) console.log(err);
 
