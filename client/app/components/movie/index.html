@@ -31,11 +31,10 @@
         <li class="row" template="ngFor let movie of movies; #i = index">
             <div class="col-sm-12">
                 <div class=" col-sm-10">
-                    <div class="title"> {{movie.Name}}   </div>
-                    <div class="desc"> {{movie.Description}}   </div>
+                    <div class="title"> {{movie.title}}   </div>                    
                 </div>
                 <div class=" col-sm-2">
-                    <a href="movies/details/{{movie._id}}">View Details</a>
+                    <div class="desc"> {{movie.year}}   </div>
                 </div>
             </div>
         </li>
