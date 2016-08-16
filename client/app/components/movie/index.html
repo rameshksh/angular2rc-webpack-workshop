@@ -15,23 +15,27 @@
                <input type="text" name="type" class="form-control" [(ngModel)]="model.type">
            </div>
            <div class="col-sm-3">
-               <button type=submit class="btn btn-success">Search</button>
+               <button type=submit class="btn btn-success search-btn">Search</button>
            </div>
         </form>    
     </div>
 </section>
 <section class="row">
     <div class="col-sm-12">
+        <div class="col-sm-2">  </div>
         <div class="col-sm-5"> Title </div>
-        <div class="col-sm-5"> Description  </div>
+        <div class="col-sm-5"> Year  </div>
     </div>
 </section>
 <section class="panel panel-default">
     <ul id="movie-list" class="form list list-unstyled">
         <li class="row" template="ngFor let movie of movies; #i = index">
             <div class="col-sm-12">
-                <div class=" col-sm-10">
-                    <div class="title"> {{movie.title}}   </div>                    
+                <div class="col-sm-3"> 
+                    <img class="poster" src="{{movie.poster}}" /> 
+                </div>
+                <div class=" col-sm-7">
+                    <div class="title"> <a href="/movies/{{movie.imdb}}"> {{movie.title}} </a>  </div>                    
                 </div>
                 <div class=" col-sm-2">
                     <div class="desc"> {{movie.year}}   </div>

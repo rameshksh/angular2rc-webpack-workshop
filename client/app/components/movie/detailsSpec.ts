@@ -39,7 +39,7 @@ import {ProxyService} from '../../services/proxyService';
 
         beforeEach(() => {       
             movie = new Movie();
-            
+
             movie.id = 1;
             movie.name = "Avtar";
             movie.description = "Awesome Movie";
@@ -61,7 +61,7 @@ import {ProxyService} from '../../services/proxyService';
        beforeEach(inject([XHRBackend, ProxyService], (mockBackend, proxySvc) => {
                 proxyService = proxySvc;
 
-                component = new MovieDetails(proxyService);           
+                component = new MovieDetails(proxyService,null);           
 
                getMovieByIdPromise = new Promise<Movie>(function (resolve, reject) { resolve(movie) });
 

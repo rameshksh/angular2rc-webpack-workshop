@@ -1,10 +1,11 @@
-﻿import {Component,OnInit, OnChanges} from '@angular/core';
-import {RouteConfig, RouterLink, RootRouter} from '@angular/router-deprecated';
+﻿import {Component,OnInit, OnChanges, Optional} from '@angular/core';
+//import {RouteConfig, RouterLink, RootRouter, RouteSegment} from '@angular/router-deprecated';
+import {RouterLink, ActivatedRoute} from '@angular/router';
 import {NgFor, NgIf} from '@angular/common';
 
 import {ProxyService} from '../../services/proxyService';
 import {Base} from '../../base';
-import {Movie} from '../../models/movie';
+import {MovieDetail} from '../../models/MovieDetail';
 
 @Component({
     selector: 'component-1',
@@ -15,29 +16,34 @@ import {Movie} from '../../models/movie';
 export class MovieDetails implements OnInit//extends Base
 {
     private proxyService: ProxyService;
-    private movie: Movie;
+    private movie: MovieDetail;
+    private route : ActivatedRoute;
 
-    constructor(proxyService: ProxyService)
+    constructor(proxyService: ProxyService, @Optional() route: ActivatedRoute)
     {  
         //super('movies');
+        this.route = route;
         this.proxyService = proxyService; 
-        this.movie = new Movie();     
+        this.movie = new MovieDetail();   
+
     }
 
     getMovieDetails()
-    {
-        var id = "12";
-
-        this.proxyService.getMovieById(id).then((response) =>
-        {           
-            this.movie = response;
+    {       
+      
+        this.route.params
+            .map(params => params['id'])
+            .subscribe((id) => {
+                this.proxyService.getImdbMovies(id).then((response) =>
+                {           
+                    this.movie = response;
+                });
+            //this.proxyService.getMovies()
+            //    .map(r => r.json())
+            //    .subscribe(a => {
+            //    this.movies = a;
+            //});    
         });
-
-        //this.proxyService.getMovies()
-        //    .map(r => r.json())
-        //    .subscribe(a => {
-        //    this.movies = a;
-        //});
     }
 
     ngOnInit()

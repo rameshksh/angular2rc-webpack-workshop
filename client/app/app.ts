@@ -66,7 +66,7 @@ export class AppComponent //extends Base
 export const routes: RouterConfig = [  
   { path: 'home', component: Home },
   { path: 'about', component: About },
-  { path: 'movies/details/:id', component: MovieDetails },
+  { path: 'movies/:id', component: MovieDetails },
   { path: 'movies', component: MovieIndex}
 ];
 

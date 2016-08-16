@@ -35,7 +35,7 @@ export class IndexRoute
    }
 
    public getMoviesDetails() {
-       this.app.get('/movies/details/:id', function (req, res) {
+       this.app.get('/movies/:id', function (req, res) {
            return res.render('index.html');
        });
    }

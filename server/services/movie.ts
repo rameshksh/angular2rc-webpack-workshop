@@ -37,26 +37,27 @@ export class MovieService implements IMovieService
                 console.log('No movies were found!');
 
                 callback(err, []);
+            }else{
+                callback(err, movies);
             }
 
-            callback(err, movies);     
+                 
         });
     }
 
-    public getFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any{
+    public getFromImdb(query : any, callback: (errr: Error, item: any) => any) : any{
 
-        omdb.get(query, true, function(err, movies) {
+       omdb.get(query, true, function(err, movie) {
             if(err) {
                 return console.error(err);
             }
     
-            if(movies && movies.length < 1) {
-                 console.log('No movies were found!');
-
-                  callback(err, []);  
-            }
-
-            callback(err, movies);     
+            if(movie) {
+                 callback(err, movie);
+            }else{
+                 console.log('No movie details were found!');
+                 callback(err, {});                 
+            }    
         });
     }
 

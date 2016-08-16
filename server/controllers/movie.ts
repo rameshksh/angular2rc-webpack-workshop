@@ -30,7 +30,8 @@ export module Controllers {
 
         public getImdbMovies(req: Request, res: Response)
         {
-            var query = { title: 'saw', year:2016, type:'movie' };
+            var query = { imdb : req.query.imdb };
+
             self.movieService.getFromImdb(query, function (err, item)
             {
                 if(err) console.log(err);

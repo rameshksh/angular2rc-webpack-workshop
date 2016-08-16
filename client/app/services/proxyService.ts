@@ -2,10 +2,11 @@
 import {Injectable} from '@angular/core';
 import {Http, Request} from '@angular/http';
 import {Movie} from '../models/Movie';
+import {MovieDetail} from '../models/MovieDetail';
 
 export interface IProxyService {
     getMovieById(id: string): Promise<Movie>;
-    getImdbMovies(): Promise<Array<Movie>>;
+    getImdbMovies(id: string): Promise<MovieDetail>;
     getTopMovies(): Promise<Array<Movie>>; 
     getMovies(sortKey: string, sortOrder: string): Promise<Array<Movie>>;
     searchImdbMovies(params: Object): Promise<Array<Movie>> ;
@@ -49,11 +50,12 @@ export class ProxyService implements IProxyService {
         });
     }
 
-    public getImdbMovies(): Promise<Array<Movie>> {
+    public getImdbMovies(id: string): Promise<MovieDetail> {
         var httpService = this.http;
+        var queryString = 'imdb=' + id;
 
-        return new Promise<Array<Movie>>(function (resolve, reject) {
-            httpService.request('http://localhost:8000/api/imdb').subscribe(res => resolve(res.json()));
+        return new Promise<MovieDetail>(function (resolve, reject) {
+            httpService.request('http://localhost:8000/api/imdb', {search : queryString }).subscribe(res => resolve(res.json()));
         });
     }
 
