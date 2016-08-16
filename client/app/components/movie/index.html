@@ -20,14 +20,7 @@
         </form>    
     </div>
 </section>
-<section class="row">
-    <div class="col-sm-12">
-        <div class="col-sm-2">  </div>
-        <div class="col-sm-5"> Title </div>
-        <div class="col-sm-5"> Year  </div>
-    </div>
-</section>
-<section class="panel panel-default">
+<section class="panel panel-default" *ngIf="movies.length"> 
     <ul id="movie-list" class="form list list-unstyled">
         <li class="row" template="ngFor let movie of movies; #i = index">
             <div class="col-sm-12">
@@ -43,4 +36,7 @@
             </div>
         </li>
     </ul>
+</section>
+<section class="panel panel-default" *ngIf="!movies.length"> 
+    <div>No Movies Found. Please Search again.</div>
 </section>

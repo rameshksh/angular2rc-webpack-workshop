@@ -24,8 +24,7 @@ export class MovieDetails implements OnInit//extends Base
         //super('movies');
         this.route = route;
         this.proxyService = proxyService; 
-        this.movie = new MovieDetail();   
-
+        this.movie = new MovieDetail(); 
     }
 
     getMovieDetails()
@@ -38,11 +37,6 @@ export class MovieDetails implements OnInit//extends Base
                 {           
                     this.movie = response;
                 });
-            //this.proxyService.getMovies()
-            //    .map(r => r.json())
-            //    .subscribe(a => {
-            //    this.movies = a;
-            //});    
         });
     }
 

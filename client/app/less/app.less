@@ -6,37 +6,37 @@
 
     .header {
         top: 0px;
-        height: 40px;
+        height: 80px;
         width: @baseWidth;
         background-color: @baseColor;
         position: fixed;
         z-index: 10000;
 
-        .navbar {
-            top: 40px;
+        .navbar {            
             min-height: 40px;
 
             .wrapper {
                 &:extend(.wrapper);
             }
 
-            .list-inline {
+            .nav-pills {
                 font-weight: bold;
                 margin: 0 auto;
                 margin-left: 10%;
 
                 li {
-                    padding: 10px 20px 10px 20px;
+                    margin-top: 27px;
                     width: 100px;
                     text-align: center;
 
                     a {
                         text-decoration: none;
+                        color:#fff;
                     }
 
-                    &.active {
-                        background-color: #1767a0;
+                    &.active {                        
                         color: #ffffff;
+                        border: 1px solid;
 
                         a {
                             text-decoration: none;
@@ -46,24 +46,24 @@
                 }
             }
 
-                .list-inline li:hover {
-                    background-color: #1767a0;
+            .nav-pills li:hover {
+                border: 1px solid;
 
-                    a {
-                        text-decoration: none;
-                        color: #ffffff;
-                    }
-                }
-
-                .list-inline li a:hover {
+                a {
+                    text-decoration: none;
                     color: #ffffff;
                 }
+            }
+
+            .nav-pills li a:hover {
+                color: #ffffff;
+            }
         }
     }
 
     .content {
-        &:extend(body);
-        top: 85px;
+        &:extend(body);   
+        top: 100px;    
         position: absolute;
         //height: 600px;
 
@@ -94,12 +94,11 @@
         }
 
         .list {
-            margin: 20px;
-            
+            margin: 20px;           
 
             li {
                 text-decoration: none;
-                background-color: #337AB7;
+                background-color: @baseColor;
                 padding: 10px;
                 border: 1px solid #fff;
                 color: #fff;
@@ -171,5 +170,6 @@
     }
 
     .footer {
+        background-color: @baseColor;
     }
 }

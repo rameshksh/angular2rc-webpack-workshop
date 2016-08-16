@@ -23,9 +23,9 @@ import './less/app.less';
 
 export class AppComponent //extends Base
 {
-     activeHomeTab: string;
-     activeAboutTab: string;
-     activeMoviesTab: string;
+     isHomeTabActive: boolean;
+     isAboutTabActive: boolean;
+     isMovieTabActive: boolean;
 
      constructor()
      {
@@ -34,30 +34,28 @@ export class AppComponent //extends Base
 
     onInit()
     {
-        this.activeHomeTab = 'active';
-        this.activeAboutTab = 'inactive';
-        this.activeMoviesTab = 'inactive'; 
+        this.isHomeTabActive = false;
+        this.isAboutTabActive = false;
+        this.isMovieTabActive = false; 
     }
 
     setActiveTab(tabName: string)
     {
-        this.activeHomeTab = 'inactive';
-        this.activeAboutTab = 'inactive';
-        this.activeMoviesTab = 'inactive';       
+         this.onInit();     
 
         switch (tabName)
         {
             case "home":
-                this.activeHomeTab = 'active';
+                this.isHomeTabActive = true;
                 break;
             case "about":
-                this.activeAboutTab = 'active';
+                this.isAboutTabActive = true;
                 break;
             case "movies":
-                this.activeMoviesTab = 'active';
+                this.isMovieTabActive = true;
                 break;
             default:
-                this.activeHomeTab = 'active';
+                this.isHomeTabActive = true;
                 break;
         }
     }
