@@ -3,13 +3,12 @@
 .movies {
     margin: 0px !important;
     padding: 0px !important;
+    overflow-y: auto;
 
     .header {
         top: 0px;
-        height: 80px;
-        width: @baseWidth;
-        background-color: @baseColor;
-        position: fixed;
+        height: 80px;       
+        background-color: @baseColor;        
         z-index: 10000;
 
         .navbar {            
@@ -17,6 +16,11 @@
 
             .wrapper {
                 &:extend(.wrapper);
+            }
+
+            .nav-pills .nav-link.active{
+                background: none;
+                border: 1px solid #fff;
             }
 
             .nav-pills {
@@ -36,26 +40,27 @@
 
                     &.active {                        
                         color: #ffffff;
-                        border: 1px solid;
 
                         a {
                             text-decoration: none;
                             color: #ffffff;
+                            border: 1px solid #fff;
                         }
                     }
                 }
             }
 
             .nav-pills li:hover {
-                border: 1px solid;
+                border: 1px solid #fff;
 
                 a {
                     text-decoration: none;
-                    color: #ffffff;
+                    color: #ffffff;                   
                 }
             }
 
             .nav-pills li a:hover {
+                border: 1px solid;
                 color: #ffffff;
             }
         }
@@ -63,8 +68,7 @@
 
     .content {
         &:extend(body);   
-        top: 100px;    
-        position: absolute;
+        margin-top: 10px;            
         //height: 600px;
 
         .wrapper {
@@ -170,6 +174,12 @@
     }
 
     .footer {
-        background-color: @baseColor;
+        background-color: #0385a0;
+        width: 40px;
+        color: #fff;
+        font-weight: bold;
+        bottom: 0px;
+        width: 78%;
+        position: absolute;
     }
 }
