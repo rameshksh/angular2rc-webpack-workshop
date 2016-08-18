@@ -19,29 +19,41 @@ export interface IMovieService {
         delete(id : string, callback: (errr: Error, item: any) => any);
 }
 
+var self;
 export class MovieService implements IMovieService
 {        
     public constructor()
     {
-        
+        self = this;        
     }
 
-    public searchFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any{
+    private ValidateData(movie: IMovie) : void
+    {       
+            self.getByQuery({imdb : movie.imdb}, function(err, data){
+                if(data && data.length < 1){                
+                    self.create(movie, function(err, data){
+                        if (err) throw err;
+                        
+                            console.log("Movie not found so added...");  
+                    });
+                }   
+            }); 
+    }
+
+    public searchFromImdb(query : Object, callback: (errr: Error, item: any) => any) : any
+    {
         
         omdb.search(query, function(err, movies) {
             if(err) {
                 return console.error(err);
             }
     
-            if(movies && movies.length < 1) {
-                console.log('No movies were found!');
-
-                callback(err, []);
-            }else{
+            if(movies && movies.length > 0) {               
                 callback(err, movies);
-            }
-
-                 
+            }  else{
+                console.log('No movies were found!');
+                callback(err, []);
+            }    
         });
     }
 
@@ -53,6 +65,15 @@ export class MovieService implements IMovieService
             }
     
             if(movie) {
+                 var obj = <IMovie>{};
+                 obj.imdb = movie.imdb.id;
+                 obj.poster = movie.poster;
+                 obj.title = movie.title;
+                 obj.year = movie.year;
+                 obj.type = movie.type;
+
+                 self.ValidateData(obj);
+                 
                  callback(err, movie);
             }else{
                  console.log('No movie details were found!');

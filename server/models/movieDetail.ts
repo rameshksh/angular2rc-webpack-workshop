@@ -4,8 +4,7 @@ import {IAwards} from '../models/awards';
 import {Imdb} from '../models/imdb';
 
 export interface IMovieDetail
-{
-    id: number;
+{    
     actors : Array<string>;
     awards: IAwards;
     countries: Array<string>;

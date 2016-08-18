@@ -7,7 +7,7 @@ import {MovieDetail} from '../models/MovieDetail';
 export interface IProxyService {
     getMovieById(id: string): Promise<Movie>;
     getImdbMovies(id: string): Promise<MovieDetail>;
-    getTopMovies(): Promise<Array<Movie>>; 
+    getRecentlySearchedMovies(): Promise<Array<Movie>>; 
     getMovies(sortKey: string, sortOrder: string): Promise<Array<Movie>>;
     searchImdbMovies(params: Object): Promise<Array<Movie>> ;
 }
@@ -42,11 +42,11 @@ export class ProxyService implements IProxyService {
         }
     }
 
-    public getTopMovies(): Promise<Array<Movie>> {
+    public getRecentlySearchedMovies(): Promise<Array<Movie>> {
         var httpService = this.http;
 
         return new Promise<Array<Movie>>(function (resolve, reject) {
-            httpService.request('http://localhost:8000/api/movies/gettop').subscribe(res => resolve(res.json()));
+            httpService.request('http://localhost:8000/api/movies').subscribe(res => resolve(res.json()));
         });
     }
 

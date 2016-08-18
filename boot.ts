@@ -62,6 +62,6 @@ var app = express();
                 movieRoute.getRoutes();
 
             // database verification.
-            new InitialData().verifyData();
+            //new InitialData().verifyData();
         });
 });

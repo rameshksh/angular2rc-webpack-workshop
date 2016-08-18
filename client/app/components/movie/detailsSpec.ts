@@ -40,22 +40,8 @@ import {ProxyService} from '../../services/proxyService';
         beforeEach(() => {       
             movie = new Movie();
 
-            movie.id = 1;
-            movie.name = "Avtar";
-            movie.description = "Awesome Movie";
-            movie.genre = "Horror";
-            movie.rating = 5;
-            movie.year = 2005;
-            movie.collection = 100;
-            movie.language = "English";
-
-            var review = new Review();
-            review.title = "Good Movie";
-            review.description = "Must watch movie";
-            review.reviewDate = "12/2/2015";
-
-            movie.Reviews = new Array<Review>();
-            movie.Reviews.push(review);
+           
+            movie.year = 2005;           
         });
 
        beforeEach(inject([XHRBackend, ProxyService], (mockBackend, proxySvc) => {

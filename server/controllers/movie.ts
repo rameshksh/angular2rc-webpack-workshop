@@ -16,6 +16,7 @@ export module Controllers {
         updateMovie();
         deleteMovie();
         getImdbMovies(req: Request, res: Response);
+        getRecentlyVisitedMovies(req: Request, res: Response);
     }
 
     export class MoviesController //implements IMoviesController
@@ -26,6 +27,15 @@ export module Controllers {
         constructor() {
             self = this;
             this.movieService = new MovieService();
+        }
+
+        public getRecentlyVisitedMovies(req: Request, res: Response){
+            self.movieService.getAll(function (err, item)
+            {
+                if(err) console.log(err);
+
+                return res.json(item);
+            });
         }
 
         public getImdbMovies(req: Request, res: Response)

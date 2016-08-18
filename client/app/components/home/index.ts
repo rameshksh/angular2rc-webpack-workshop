@@ -30,18 +30,18 @@ export class Home implements OnInit //extends Base
         this.movies = new Array<Movie>();
     }
 
-    getTopMovies() {
-        this.proxyService.searchImdbMovies({}).then((response) => {
+    getRecentlySearchedMovies() {
+        this.proxyService.getRecentlySearchedMovies().then((response) => {
             this.movies = response;
-        });      
+        });     
     }
 
     getDetails(event, id)
     {
-       // this.router.parent.navigate('/movies/detail/' + id);
+       //this.router.parent.navigate('/movies/detail/' + id);
     }
 
     ngOnInit() {
-        this.getTopMovies();
+        this.getRecentlySearchedMovies();
     }
 }

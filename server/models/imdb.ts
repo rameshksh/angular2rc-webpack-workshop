@@ -1,6 +1,7 @@
 
-export interface Imdb{
-     id : string;
+export interface Imdb
+{
+     linkId : string;
      rating: number;
      votes : number;
 }

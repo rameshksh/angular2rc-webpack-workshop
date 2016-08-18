@@ -25,6 +25,7 @@ export class MovieIndex implements OnInit//extends Base
         //super('movies'); , public router : Router
         this.proxyService = proxyService;
         this.movies = new Array<Movie>();
+
         this.model = new Movie(); 
         this.model.year = 2016;
         this.model.type = 'movie';      
@@ -47,13 +48,14 @@ export class MovieIndex implements OnInit//extends Base
     }   
 
     onSubmit(){
-        var params = {};
+        var self = this;
+
         this.proxyService.searchImdbMovies(this.model).then((response) => {
-            this.movies = response;
+            self.movies = response;
         });
     }
 
     ngOnInit() {
-        this.getMovies();
+        //this.getMovies();
     }
 }

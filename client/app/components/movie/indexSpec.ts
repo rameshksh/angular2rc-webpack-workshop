@@ -39,24 +39,10 @@ import {ProxyService} from '../../services/proxyService';
         beforeEach(() => {
             movieList = new Array<Movie>();
 
-            var movie = new Movie();
-            var review = new Review();
-
-            movie.id = 1;
-            movie.name = "Avtar";
-            movie.description = "Awesome Movie";
-            movie.genre = "Horror";
-            movie.rating = 5;
-            movie.year = 2005;
-            movie.collection = 100;
-            movie.language = "English";
-
-            review.title = "Good Movie";
-            review.description = "Must watch movie";
-            review.reviewDate = "12/2/2015";
-
-            movie.Reviews = new Array<Review>();
-            movie.Reviews.push(review);
+            var movie = new Movie();          
+           
+            movie.title = 'xyz';
+            movie.year = 2005;          
 
             movieList.push(movie);
         });

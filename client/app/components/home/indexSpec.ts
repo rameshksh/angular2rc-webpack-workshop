@@ -39,22 +39,12 @@ import {ProxyService} from '../../services/proxyService';
 
             var movie = new Movie();          
             var review = new Review();
-
-            movie.id = 1;
-            movie.name = "Avtar";
-            movie.description = "Awesome Movie";
-            movie.genre = "Horror";
-            movie.rating = 5;
-            movie.year = 2005;
-            movie.collection = 100;
-            movie.language = "English";
+            
+            movie.year = 2005;            
 
             review.title = "Good Movie";
             review.description = "Must watch movie";
-            review.reviewDate = "12/2/2015";
-
-            movie.Reviews = new Array<Review>();
-            movie.Reviews.push(review);
+            review.reviewDate = "12/2/2015";           
 
             movieList.push(movie);        
         });
@@ -74,15 +64,15 @@ import {ProxyService} from '../../services/proxyService';
             expect(proxyService).toBeDefined();
         });        
 
-        it('should call getTopMovies on initialization', () => {
-            component.getTopMovies();
+        it('should call getRecentlySearchedMovies on initialization', () => {
+            component.getRecentlySearchedMovies();
 
-            expect(proxyService.getTopMovies).toHaveBeenCalled();
+            expect(proxyService.getRecentlySearchedMovies).toHaveBeenCalled();
         });
 
-        it('should call getTopMovies on calling onInit function', () => {
+        it('should call getRecentlySearchedMovies on calling onInit function', () => {
             component.ngOnInit();
 
-            expect(proxyService.getTopMovies).toHaveBeenCalled();
+            expect(proxyService.getRecentlySearchedMovies).toHaveBeenCalled();
         });
     });

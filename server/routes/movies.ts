@@ -19,8 +19,9 @@ export class MoviesRoute
 
     getRoutes()
     {           
-        this.app.get('/api/imdb', this.moviesController.getImdbMovies)
+        this.app.get('/api/movies', this.moviesController.getRecentlyVisitedMovies)
+        this.app.get('/api/imdb', this.moviesController.getImdbMovies);
 
-        this.app.get('/api/imdb/search', this.moviesController.searchImdbMovies)
+        this.app.get('/api/imdb/search', this.moviesController.searchImdbMovies);
     }
 }

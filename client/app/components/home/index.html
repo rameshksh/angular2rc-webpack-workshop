@@ -1,18 +1,20 @@
 ﻿<section class="row">
-    <h3 class="pad-10">Top Rated Movies</h3>
+    <h3 class="pad-10">Recently Searched Movies Movies</h3>
     <div class="span12">
-        <div class="col-sm-5"> Title </div>
-        <div class="col-sm-5"> Description  </div>
+        <div class="col-sm-3"> &nbsp; </div>
+        <div class="col-sm-7"> Title </div>
+        <div class="col-sm-2"> Year  </div>
     </div>
 </section>
 <section>   
     <div class="span12">
         <ul id="movie-list" class="form list list-unstyled">
             <li class="row" template="ngFor let movie of movies; #i = index">
-                <div class="col-sm-12" (click)="getDetails($event, movie.id)">
+                <div class="col-sm-12">
                     <div class="col-sm-11">
-                        <div class="title"> {{movie.Name}}   </div>
-                        <div class="desc"> {{movie.Description}}   </div>
+                         <div class="col-sm-3"> <img class="poster" src="{{movie.poster}}" /> </div>
+                        <div class="title"> <a routerLink="/movies/{{movie.imdb}}">{{movie.title}} </>   </div>
+                        <div class="desc"> {{movie.year}}   </div>
                     </div>
                 </div>
             </li>
