@@ -1,0 +1,27 @@
+﻿<div class="movies">        
+        <div class="wrapper">
+            <section class="header">
+                <nav class="navbar nav-inline">
+                    <div class="">
+                        <ul class="nav nav-pills">
+                            <li  class="nav-item" >
+                                <a [routerLink]="['/home']" 
+                                    (click)="setActiveTab('home')" 
+                                    class='nav-link' 
+                                    [ngClass]="{active: isHomeTabActive, inactive: !isHomeTabActive}">
+                                Home</a>
+                                </li>
+                            <li  class="nav-item" ><a [routerLink]="['/about']" (click)="setActiveTab('about')" class='nav-link' [ngClass]="{active: isAboutTabActive, inactive: !isAboutTabActive}">About</a></li>
+                            <li  class="nav-item" ><a [routerLink]="['/movies']" (click)="setActiveTab('movies')" class='nav-link' [ngClass]="{active: isMovieTabActive, inactive: !isMovieTabActive}">Movies</a></li>
+                        </ul>           
+                    </div>
+                </nav>
+          </section>              
+        <section class="content">
+            <router-outlet></router-outlet>
+        </section>
+        <section class="footer"> 
+             @Copywrite
+        </section>
+    </div> 
+</div>

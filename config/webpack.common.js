@@ -2,15 +2,25 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
+var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    'polyfills': './client/polyfills.ts',
+    'vendor': './client/vendor.ts',
+    'app': './client/main.ts'
   },
 
+  //target: 'node', // in order to ignore built-in modules like path, fs, etc. 
+
+  //externals: [nodeExternals()],
+
+  devtool: 'eval', 
+
   resolve: {
+     modulesDirectories: [ 
+      'node_modules'
+    ],
     extensions: ['', '.js', '.ts']
   },
 
@@ -18,6 +28,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
+        exclude:[/node_modules/],
         loaders: ['ts', 'angular2-template-loader']
       },
       {
@@ -37,9 +48,19 @@ module.exports = {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw'
+      },
+      {
+         test: /\.less$/,
+          loader: ExtractTextPlugin.extract(
+              // activate source maps via loader query
+              'css?sourceMap!' +
+              'less?sourceMap'
+          )
       }
     ]
   },
+
+  progress: true,
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
@@ -47,7 +68,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'client/index.html'
     })
   ]
 };

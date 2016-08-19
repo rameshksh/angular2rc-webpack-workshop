@@ -1,0 +1,44 @@
+﻿
+<section class="panel menu col-sm-12">    
+    <div class="col-sm-12">
+        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+           <div class="form-group col-sm-3">
+               <label>Title</label>
+               <input type="text" name="title" class="form-control" [(ngModel)]="model.title">
+           </div>
+           <div class="form-group col-sm-3">
+               <label>Year</label>
+               <input type="text" name="year" class="form-control" [(ngModel)]="model.year">
+           </div>
+           <div class="form-group col-sm-3">
+               <label>Type</label>
+               <input type="text" name="type" class="form-control" [(ngModel)]="model.type">
+           </div>
+           <div class="col-sm-3">
+               <button type=submit class="btn btn-success search-btn">Search</button>
+           </div>
+        </form>    
+    </div>
+</section>
+<section class="col-sm-12" *ngIf="movies.length"> 
+    <ul id="movie-list" class="form list list-unstyled">
+        <li class="row" template="ngFor let movie of movies; #i = index">
+            <div class="col-sm-12">
+                <div class="col-sm-3"> 
+                    <img class="poster" src="{{movie.poster}}" /> 
+                </div>
+                <div class=" col-sm-7">
+                    <div class="title"> 
+                        <a href="/movies/{{movie.imdb}}"> {{movie.title}} </a> 
+                    </div>                    
+                </div>
+                <div class=" col-sm-2">
+                    <div class="desc"> {{movie.year}}   </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+<section class="panel panel-default" *ngIf="!movies.length"> 
+    <div>No Movies Found. Please Search again.</div>
+</section>

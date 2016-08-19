@@ -1,0 +1,21 @@
+﻿<div class="col-sm-12 header-title">
+    <h3>{{movie.title}}</h3>
+</div>
+<div class="container">
+   <div class="row">
+        <div class="col-sm-4">
+           <img src="{{movie.poster}}" />
+        </div>       
+        <div class="col-sm-8">
+            <div class="col-sm-6"><label> Release Year:&nbsp;  </label>{{movie.year}}</div>
+            <div class="col-sm-6"><label> Countries:&nbsp;  </label>{{movie.countries}}</div>               
+            <div class="col-sm-6"><label> Genres:&nbsp;  </label>{{movie.genres}}</div>           
+            <div class="col-sm-12"><label> Rating:&nbsp; </label>{{movie.imdb.rating}} of total vote ({{movie.imdb.votes}}) </div>
+            <div class="col-sm-12"><label> Directed By:&nbsp;  </label>{{movie.director}}</div> 
+            <div class="col-sm-12"><label> Writen By:&nbsp;  </label>{{movie.writers}}</div>        
+        </div>
+   </div>    
+   <div class="col-sm-12 pad-10">
+       <label> Story: &nbsp; </label>{{movie.plot}}     
+    </div>
+</div>
