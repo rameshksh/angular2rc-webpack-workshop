@@ -7,14 +7,11 @@ import {IMovieModel} from '../models/movieModel';
 
 // create a schema
 var movieSchema = new mongoose.Schema({ 
-    name: String,
-    description: String,
-    collections: Number,
-    genre: String,
-    language: String,   
-    year: String,
-    type: String,
-    rating: Number
+    imdb : String, 
+    year: Number,   
+    type : String,
+    poster: String,
+    title: String
 });
 
 // the schema is useless so far

@@ -5,6 +5,7 @@
 var omdb = require('omdb');
 
 import {IMovie} from '../models/movie';
+import {IMovieDetail} from '../models/movieDetail';
 import Movie = require('../schemas/movie');
 
 export interface IMovieService {
@@ -59,10 +60,10 @@ export class MovieService implements IMovieService
 
     public getFromImdb(query : any, callback: (errr: Error, item: any) => any) : any{
 
-       omdb.get(query, true, function(err, movie) {
+       omdb.get(query, true, function(err, movie : IMovieDetail) {
             if(err) {
                 return console.error(err);
-            }
+            }         
     
             if(movie) {
                  var obj = <IMovie>{};

@@ -1,7 +1,7 @@
 
 export interface Imdb
 {
-     linkId : string;
+     id : string;
      rating: number;
      votes : number;
 }
